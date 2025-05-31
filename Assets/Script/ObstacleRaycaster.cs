@@ -54,8 +54,11 @@ public class ObstacleRaycaster : MonoBehaviour
     void ShowMessageFrom(string type)
     {
         string msg = NPCMessageStore.GetRandomMessage(type);
-        messageText.text = msg;
-        messageText.transform.parent.gameObject.SetActive(true);
+        if (messageText != null)
+        {
+            messageText.text = msg;
+            messageText.transform.parent.gameObject.SetActive(true);
+        }        
         lastAlertTime = Time.time;
 
         // Đổi màu panel nếu là "slide"
@@ -78,7 +81,10 @@ public class ObstacleRaycaster : MonoBehaviour
     IEnumerator HideMessageAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        messageText.transform.parent.gameObject.SetActive(false);
+        if (messageText != null)
+        {
+            messageText.transform.parent.gameObject.SetActive(false);
+        }
         hideCoroutine = null; // reset
     }
 

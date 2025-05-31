@@ -7,6 +7,9 @@ using TMPro;
 public class NPCWebhookCaller : MonoBehaviour
 {
     public TextMeshProUGUI myText;
+    public GameObject bg_1;
+    public GameObject playButton;
+    public GameObject exitButton;
 
     void Start()
     {
@@ -40,7 +43,9 @@ public class NPCWebhookCaller : MonoBehaviour
             {
                 myText.text = message;
             }
-                
+            bg_1.SetActive(true);
+            playButton.SetActive(true);
+            exitButton.SetActive(true);
             // Gọi NPC hiển thị câu này nếu cần
             // npcMessageDisplay.ShowMessage(message);
         }
