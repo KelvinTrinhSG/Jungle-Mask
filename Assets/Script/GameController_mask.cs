@@ -21,6 +21,8 @@ public class GameController_mask : MonoBehaviour
     public float speed_up;
     public GameObject panel_loading;
 
+    public GameSpeedFetcher speedFetcher; // Gán trong Unity Inspector
+
     private void Awake()
     {
         if(singleton==null)
@@ -41,6 +43,9 @@ public class GameController_mask : MonoBehaviour
         gui = GameObject.Find("GUI");
         scoreText = gui.transform.GetChild(1).GetChild(0).GetComponent<Text>();
         sound.Play();
+        Debug.Log(GameSettings.Instance.adjustSpeed);
+        speed_up += GameSettings.Instance.adjustSpeed;
+        Debug.Log("speed_up" + speed_up);
     }
 
     void Update()
@@ -69,10 +74,21 @@ public class GameController_mask : MonoBehaviour
         }
     }
 
+    public bool hasFetchedSpeed = false;
+
     private void RestartMenuPopup()
     {
         if(player == null)
         {
+            //if (player == null && !hasFetchedSpeed)
+            //{
+            //    // Điều chỉnh độ khó của game ở đây
+            //    speedFetcher.FetchSpeedFromScore((int)score);
+            //    hasFetchedSpeed = true; // Đánh dấu đã gọi rồi
+            //}
+
+            PlayerPrefs.SetInt("score", (int)score);
+
             gui.transform.GetChild(2).transform.gameObject.SetActive(false);
             gui.transform.GetChild(0).transform.gameObject.SetActive(true);
             gui.transform.GetChild(0).GetChild(5).gameObject.SetActive(false);

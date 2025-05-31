@@ -20,12 +20,12 @@ public class ObstacleRaycaster : MonoBehaviour
         if (Time.time - lastAlertTime < cooldown)
             return;
 
-        if (Physics2D.Raycast(raycastTop.position, Vector2.right, rayDistance, obstacleLayer))
+        if (raycastTop != null && Physics2D.Raycast(raycastTop.position, Vector2.right, rayDistance, obstacleLayer))
         {
             ShowMessageFrom("slide");
             Debug.Log("slide");
         }
-        else if (Physics2D.Raycast(raycastBottom.position, Vector2.right, rayDistance, obstacleLayer))
+        else if (raycastBottom != null && Physics2D.Raycast(raycastBottom.position, Vector2.right, rayDistance, obstacleLayer))
         {
             Debug.Log("jump");
             ShowMessageFrom("jump");
@@ -34,8 +34,12 @@ public class ObstacleRaycaster : MonoBehaviour
 
     private Image panelImage;
     private Color defaultColor;
+    public GameSpeedFetcher speedFetcher; // Gán trong Unity Inspector
     void Start()
     {
+        int savedScore = PlayerPrefs.GetInt("score", 0);
+        speedFetcher.FetchSpeedFromScore(savedScore);
+
         // Lấy panel chứa messageText
         dialogPanel = messageText.transform.parent.gameObject;
 

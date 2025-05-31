@@ -22,7 +22,6 @@ public class NPCWebhookCaller : MonoBehaviour
 
     IEnumerator GetNPCMessage(int score)
     {
-        Debug.Log("A");
         string url = $"https://n8n-1-rayu.onrender.com/webhook/npc-score-response?score={score}";
         UnityWebRequest req = UnityWebRequest.Get(url);
         yield return req.SendWebRequest();
@@ -37,7 +36,11 @@ public class NPCWebhookCaller : MonoBehaviour
 
             string message = wrapper.list[0].output;
             Debug.Log("NPC says: " + message);
-            myText.text = message;
+            if (myText != null && myText.gameObject != null)
+            {
+                myText.text = message;
+            }
+                
             // Gọi NPC hiển thị câu này nếu cần
             // npcMessageDisplay.ShowMessage(message);
         }

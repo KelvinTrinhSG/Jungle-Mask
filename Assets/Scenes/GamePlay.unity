@@ -1763,6 +1763,7 @@ MonoBehaviour:
     m_Bits: 64
   messageText: {fileID: 1871140719}
   dialogPanel: {fileID: 0}
+  speedFetcher: {fileID: 1602696237}
 --- !u!4 &902603806
 Transform:
   m_ObjectHideFlags: 0
@@ -2667,6 +2668,8 @@ MonoBehaviour:
   isGame: 1
   speed_up: 0
   panel_loading: {fileID: 0}
+  speedFetcher: {fileID: 1602696237}
+  hasFetchedSpeed: 0
 --- !u!1 &1228409435
 GameObject:
   m_ObjectHideFlags: 0
@@ -3237,6 +3240,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1602696235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1602696236}
+  - component: {fileID: 1602696237}
+  m_Layer: 0
+  m_Name: GameSpeedFetcher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1602696236
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602696235}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.156922, y: -0.87911206, z: 90}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1602696237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602696235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29b79c670fcbd3e4b865a35845ebd744, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  webhookUrl: https://n8n-1-rayu.onrender.com/webhook/game-speed
 --- !u!1 &1608461901
 GameObject:
   m_ObjectHideFlags: 0
@@ -5221,3 +5269,4 @@ SceneRoots:
   - {fileID: 1213493433}
   - {fileID: 1951751737}
   - {fileID: 902603806}
+  - {fileID: 1602696236}
